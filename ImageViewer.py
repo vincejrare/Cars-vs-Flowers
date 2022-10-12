@@ -5,7 +5,7 @@ import glob
 
 def read_images(folder):
     """
-    Create a single list of grayscaled pictures of all jpg files in a specific folder
+    Create a single list of grayscale pictures of all jpg files in a specific folder
 
     Arguments:
     folder -- the address of the folder from which to take the pictures
@@ -24,16 +24,16 @@ def read_images(folder):
 
 def flatten_images(images):
     """
-    Convert a list of images into an array of flattened pictures
+    Convert a list of images into an array of flattened, normalized data
 
     Arguments:
     images -- the list of images
 
     Returns:
-    images_flatten -- the array of flattened images
+    images_flatten -- the array of flattened, normalized data
     """
     images_array = np.asarray(images)
-    images_flatten = images_array.reshape(images_array.shape[0], -1).T
+    images_flatten = images_array.reshape(images_array.shape[0], -1).T/255
     return images_flatten
 
 
@@ -75,8 +75,10 @@ def initialize_data():
     return x_train, y_train, x_test, y_test
 
 
-x1, y1, x2, y2 = initialize_data()
-print(x1.shape)
-print(y1.shape)
-print(x2.shape)
-print(y2.shape)
+if __name__ == "__main__":
+    x1, y1, x2, y2 = initialize_data()
+    print(x1[0])
+    print(x1.shape)
+    print(y1.shape)
+    print(x2.shape)
+    print(y2.shape)
